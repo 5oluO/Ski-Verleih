@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ski-Verleih</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Ski-Verleih</h1>
+
+        
+        <nav>
+            <a href="#dashboard" id="nav-dashboard">Dashboard</a>
+            <a href="#ski-management" id="nav-skis">Ski-Verwaltung</a>
+            <a href="#person-management" id="nav-persons">Personen</a>
+            <a href="#rental-management" id="nav-rentals">Reservierungen</a>
+        </nav>
+
+    </header>
+
+    <main>
+        <section class="dashboard" id="dashboard">
+            <h2>Dashboard</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <p>Verfügbare Ski</p>
+                    <h3 id="available-skis">0</h3>
+                </div>
+
+                <div class="card">
+                    <p>Ausgeliehene Ski</p>
+                    <h3 id="rented-skis">0</h3>
+                </div>
+
+                <div class="card">
+                    <p>Gesamt Ski</p>
+                    <h3 id="total-skis">0</h3>
+                </div>
+
+                <div class="card">
+                    <p>Registrierte Personen</p>
+                    <h3 id="registered-persons">0</h3>
+                </div>
+
+            </div>
+
+            <h2>Schnellzugriff</h2>
+
+            <div class="buttons">
+                <button type="button" id="show-skis">Ski verwalten</button>
+                <button type="button" id="show-persons">Personen verwalten</button>
+                <button type="button" id="show-rentals">Neue Ausleihe</button>
+            </div>
+        </section>
+        
+<section id="ski-management" class="management" hidden>
+    <h2>Ski-Verwaltung</h2>
+
+    <form id="ski-form">
+        <label for="ski-model">Ski-Modell:</label>
+        <input type="text" id="ski-model" required>
+        <button type="submit">Ski hinzufügen</button>
+    </form>
+
+    <p id="ski-feedback" role="status"></p>
+
+    <h3>Alle Ski</h3>
+    <ul id="ski-list"></ul>
+
+            
+                    <h3>Preise verwalten</h3>
+
+                    <form id="price-form">
+                        <label for="price-ski">Ski:</label>
+                        <select id="price-ski" required></select>
+
+                        <label for="price-hour">Preis pro Stunde (€):</label>
+                        <input type="number" id="price-hour"
+                            min="0.01" step="0.01" required>
+
+                        <label for="price-day">Preis pro Tag (€):</label>
+                        <input type="number" id="price-day"
+                            min="0.01" step="0.01" required>
+
+                        <button type="submit">Preise speichern</button>
+                    </form>
+
+                    <p id="price-feedback" role="status"></p>
+
+
+
+
+</section>
+
+
+
+
+<section id="person-management" class="management" hidden>
+    <h2>Personen-Verwaltung</h2>
+
+    <h3>Neue Person registrieren</h3>
+
+    <form id="person-form">
+        <label for="first-name">Vorname:</label>
+        <input type="text" id="first-name" required>
+
+        <label for="last-name">Nachname:</label>
+        <input type="text" id="last-name" required>
+
+        <label for="document-type">Ausweistyp:</label>
+        <select id="document-type" required>
+            <option value="Reisepass">Reisepass</option>
+            <option value="Personalausweis">Personalausweis</option>
+            <option value="Führerschein">Führerschein</option>
+        </select>
+
+        <label for="document-nr">Ausweisnummer:</label>
+        <input type="text" id="document-nr" required>
+
+        <button type="submit">Person hinzufügen</button>
+    </form>
+
+    <p id="person-feedback" role="status"></p>
+
+    <h3>Registrierte Personen</h3>
+    <ul id="person-list"></ul>
+
+    <hr>
+
+    <h3>Ausweis hochladen (optional)</h3>
+
+    <form id="document-form">
+        <label for="document-person">Person:</label>
+        <select id="document-person" required></select>
+
+        <label for="document-file">Ausweis (PDF, JPG, PNG):</label>
+        <input type="file" id="document-file"
+               accept=".pdf,.jpg,.jpeg,.png" required>
+
+        <button type="submit">Ausweis hochladen</button>
+    </form>
+
+    <p id="document-feedback" role="status"></p>
+</section>
+
+
+
+
+
+
+    <section id="rental-management" class="management" hidden>
+        <h2>Neue Ausleihe</h2>
+
+        <form id="rental-form">
+            <label for="rental-person">Person:</label>
+            <select id="rental-person" required></select>
+
+            <label for="rental-ski">Ski:</label>
+            <select id="rental-ski" required></select>
+
+            <label for="rental-date">Verleihbeginn:</label>
+            <input type="datetime-local" id="rental-date" required>
+
+            <label for="rental-unit">Abrechnung:</label>
+            <select id="rental-unit">
+                <option value="days">Tage</option>
+                <option value="hours">Stunden</option>
+            </select>
+
+            <label for="rental-duration">Dauer:</label>
+            <input type="number" id="rental-duration"
+                min="1" value="1" required>
+
+            <button type="submit">Ausleihe erstellen</button>
+        </form>
+
+        <p id="rental-price" role="status">Gesamtpreis: —</p>
+
+        <p id="rental-feedback" role="status"></p>
+
+        <h3>Alle Ausleihen</h3>
+        <ul id="rental-list"></ul>
+</section>
+
+
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
